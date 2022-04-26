@@ -74,7 +74,37 @@ function ServiceCform() {
 
     }
     // FILE 
+    const [fileBtn, setFileBtn] = useState(true);
+    const [isFile, setIsFile] = useState(false);
+    const [fileTable, setFileTable] = useState(false)
+    const fileRef = useRef('');
+    const handleFile = () => {
+        setIsFile(!isFile);
+        setFileBtn(!fileBtn)
+    };
+    const [file, setFile] = useState([]);
+    const addFile = () => {
+        if (fileRef.current.value === '') {
+            alert('Please Enter value for adding plan ')
+        }
+        else {
+            const fileValue = {
+                fileName: fileRef.current.value
+            }
+            setFile([...file, fileValue])
+            console.log(file)
+            fileRef.current.value = '';
+            setFileTable(true);
+        }
+    }
+    const fileDelete = (index) => {
+        let newFile = file.slice(0, index).concat(file.slice(index + 1));
+        if (file.length == 1 || file.length == 0) {
+            setFileTable(false);
+        }
+        setFile(newFile);
 
+    }
 
     // END 
     return (
@@ -340,7 +370,53 @@ function ServiceCform() {
                                     }
                                 </div>
                                 {/* END  */}
-
+                                {/* FILE DATA  */}
+                                <div class=" m-3  " >
+                                    <div class="d-flex mt-3">
+                                        <p class="fs-4 ms-4"> Add Files </p>
+                                        {fileBtn && <i onClick={handleFile} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
+                                        {!fileBtn && <i onClick={handleFile} style={{ cursor: 'pointer' }} class="bi bi-dash-square fs-4 ms-3 "></i>}
+                                    </div>
+                                </div>
+                                {isFile &&
+                                    <div class="px-5">
+                                        <div style={{ position: "relative", marginBottom: '70px' }}  >
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={fileRef}></textarea>
+                                                <label for="floatingTextarea">Notes</label>
+                                            </div>
+                                            <div>
+                                                <button onClick={addFile} className={scStyle.addBtn} type='button'>ADD</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="px-5 mt-3">
+                                    {fileTable &&
+                                        <div style={{ marginBottom: '20px', marginTop: '0px' }}  >
+                                            <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
+                                                <thead>
+                                                    <tr>
+                                                        <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6  border">#</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 text-center border">Notes</th>
+                                                        <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {file.map((file, index) => (
+                                                        <tr>
+                                                            <td style={{ width: '5%' }} class="fs-6 fw-normal border">{index + 1}</td>
+                                                            <td class="fs-6 ps-5 text-start fw-normal border">{file.fileName}</td>
+                                                            <td class="fs-5 ps-5 fw-normal border">
+                                                                <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => fileDelete(index)} class="bi bi-trash ms-2"></i>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+                                </div>
                                 {/* END  */}
                                 <div style={{ marginTop: '50px' }} class="col-12 text-center">
                                     <button class="btn btn-primary" type="submit">Add Service Data</button>
