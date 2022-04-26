@@ -73,7 +73,10 @@ function ServiceCform() {
         setNote(newNote);
 
     }
+    // FILE 
 
+
+    // END 
     return (
         <form action="">
             <div class="my-5">
@@ -267,7 +270,7 @@ function ServiceCform() {
                                                         <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Name</th>
                                                         <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Plane Code</th>
                                                         <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Plan Description</th>
-                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
+                                                        <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -277,7 +280,7 @@ function ServiceCform() {
                                                             <td class="fs-6 ps-5 fw-normal border">{plan.planName}</td>
                                                             <td class="fs-6 ps-5 fw-normal border">{plan.planCode}</td>
                                                             <td class="fs-6 ps-5 fw-normal border">{plan.planDes}</td>
-                                                            <td class="fs-5 ps-5 fw-normal border">
+                                                            <td style={{ width: '5%' }} class="fs-5 ps-5 fw-normal border">
                                                                 <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => planDelete(index)} class="bi bi-trash ms-2"></i>
                                                             </td>
                                                         </tr>
@@ -287,9 +290,10 @@ function ServiceCform() {
                                         </div>
                                     }
                                 </div>
+
                                 {/* END  */}
                                 {/* ADD NOTES  */}
-                                <div class=" m-3 " >
+                                <div class=" m-3  " >
                                     <div class="d-flex mt-3">
                                         <p class="fs-4 ms-4">Add Notes </p>
                                         {noteBtn && <i onClick={handleNote} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
@@ -297,19 +301,21 @@ function ServiceCform() {
                                     </div>
                                 </div>
                                 {isNote &&
-                                    <div style={{ position: "relative" }} class="px-5 ">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={noteRef}></textarea>
-                                            <label for="floatingTextarea">Notes</label>
-                                        </div>
-                                        <div class="my-3">
-                                            <button style={{ position: 'absolute', right: '30%', padding: '8px', border: 'none', backgroundColor: '#4c62e2', borderRadius: '4px', color: '#ffffff' }} onClick={addNote} type='button'>ADD</button>
+                                    <div class="px-5">
+                                        <div style={{ position: "relative", marginBottom: '70px' }}  >
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={noteRef}></textarea>
+                                                <label for="floatingTextarea">Notes</label>
+                                            </div>
+                                            <div>
+                                                <button onClick={addNote} className={scStyle.addBtn} type='button'>ADD</button>
+                                            </div>
                                         </div>
                                     </div>
                                 }
                                 <div class="px-5 mt-3">
                                     {noteTable &&
-                                        <div style={{ marginBottom: '20px' }}  >
+                                        <div style={{ marginBottom: '20px', marginTop: '0px' }}  >
                                             <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
                                                 <thead>
                                                     <tr>
@@ -334,7 +340,9 @@ function ServiceCform() {
                                     }
                                 </div>
                                 {/* END  */}
-                                <div class="col-12 text-center mt-4">
+
+                                {/* END  */}
+                                <div style={{ marginTop: '50px' }} class="col-12 text-center">
                                     <button class="btn btn-primary" type="submit">Add Service Data</button>
                                 </div>
                             </div>
