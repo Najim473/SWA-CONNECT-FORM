@@ -126,37 +126,4 @@ td ul button:nth-child(5) {
   background: #4c62e2;
   color: white;
 }
-
-.planTable {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.planTable thead tr th {
-  font-size: 20px;
-  background: #f1eeee;
-  font-weight: 100;
-  padding-left: 30px;
-}
-
-.planTable thead tr th:nth-child(4) {
-  text-align: end;
-  padding-right: 30px;
-}
-
-.planTable tbody tr td {
-  font-size: 18px;
-  padding-left: 30px;
-  background: #b4cee4;
-}
-
-.planTable tbody tr td i {
-  color: #e43039;
-}
-
-.planTable tbody tr td:nth-child(4) {
-  text-align: end;
-  background: #b4cee4;
-  padding-right: 30px;
-}
-/*# sourceMappingURL=ServiceCarrier.module.css.map */
+ 

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
-import scStyle from './Styles/ServiceCarrier.module.css'
+// import scStyle from './Styles/ServiceCarrier.module.css'
+import scStyle from './ServiceCarrier.module.css';
 function ServiceCform() {
     const [plusBtn, setPlusBtn] = useState(true);
     const [isShow, setIsshow] = useState(false);
@@ -27,8 +28,8 @@ function ServiceCform() {
             planNameRef.current.value = '';
             planCodeRef.current.value = '';
             planDesRef.current.value = '';
+            setPlanTable(true);
         }
-        setPlanTable(true);
     }
     const planDelete = (index) => {
         let newPlan = plan.slice(0, index).concat(plan.slice(index + 1));
@@ -171,14 +172,24 @@ function ServiceCform() {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row px-5">
+                                    <div class="col-12 col-md-12 col-lg-12">
+                                        <div class="mb-3 text-start">
+                                            <label f class="form-label">SIM Status</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Select Option</option>
+                                                <option value="1">Active</option>
+                                                <option value="2">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 {/* Phone Plans  */}
                                 <div class=" m-3 " >
                                     <div class="d-flex mt-3">
                                         <p class="fs-4 ms-4">Add Phone Plan </p>
                                         {plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
                                         {!plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-dash-square fs-4 ms-3 "></i>}
-                                        {/* {plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class=" fa-solid fa-plus-large fs-3 ms-3 "></i>}
-                                        {!plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="fa-solid fa-minus-large fs-3 ms-3 "></i>} */}
                                     </div>
                                 </div>
                                 {isShow &&
@@ -210,36 +221,58 @@ function ServiceCform() {
                                                 <button onClick={addData} className={scStyle.addBtn} type='button'>ADD</button>
                                             </div>
                                         </div>
-                                        {planTable &&
-                                            <div className='border'>
-                                                <table className={scStyle.planTable} class="table table-striped border border-1">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Plane Code</th>
-                                                            <th>Plan Description</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
 
-                                                        {plan.map((plan, index) => (
-                                                            <tr >
-                                                                <td >{plan.planName}</td>
-                                                                <td >{plan.planCode}</td>
-                                                                <td >{plan.planDes}</td>
-                                                                <td>
-                                                                    <i onClick={() => planDelete(index)} class="bi bi-trash"></i>
-                                                                </td>
-                                                            </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        }
                                     </div>
                                 }
-                                {/* End  */}
+                                <div class="px-5">
+                                    {planTable &&
+                                        <div style={{ marginBottom: '20px' }}  >
+                                            <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
+                                                <thead>
+                                                    <tr>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Name</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Plane Code</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Plan Description</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    {plan.map((plan, index) => (
+                                                        <tr>
+                                                            <td class="fs-6 ps-5 fw-normal border">{plan.planName}</td>
+                                                            <td class="fs-6 ps-5 fw-normal border">{plan.planCode}</td>
+                                                            <td class="fs-6 ps-5 fw-normal border">{plan.planDes}</td>
+                                                            <td class="fs-5 ps-5 fw-normal border">
+                                                                <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => planDelete(index)} class="bi bi-trash ms-2"></i>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+                                </div>
+                                {/* END  */}
+                                {/* ADD NOTES  */}
+                                {/* <div class=" m-3 " >
+                                    <div class="d-flex mt-3">
+                                        <p class="fs-4 ms-4">Add Notes </p>
+                                        {plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
+                                        {!plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-dash-square fs-4 ms-3 "></i>}
+                                    </div>
+                                </div>
+                                {isShow &&
+                                    <div class="px-5">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                            <label for="floatingTextarea">Notes</label>
+                                        </div>
+                                    </div>
+                                } */}
+                                {/* END  */}
+
+                                {/* End
                                 <div class="row px-5">
                                     <div class="col-12 col-md-6 col-lg-6">
                                         <div class="mb-3 text-start">
@@ -257,17 +290,17 @@ function ServiceCform() {
                                             <input class="form-control" type="file" id="formFileMultiple" multiple />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row px-5">
+                                </div> */}
+                                {/* <div class="row px-5">
                                     <div class="col-12 col-md-12 col-lg-12">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                             <label for="floatingTextarea">Notes</label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div class="col-12 text-center mt-4">
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                    <button class="btn btn-primary" type="submit">Add Service Data</button>
                                 </div>
                             </div>
                         </div>
