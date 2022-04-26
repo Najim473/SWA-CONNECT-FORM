@@ -381,9 +381,9 @@ function ServiceCform() {
                                 {isFile &&
                                     <div class="px-5">
                                         <div style={{ position: "relative", marginBottom: '70px' }}  >
-                                            <div class="form-floating mb-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={fileRef}></textarea>
-                                                <label for="floatingTextarea">Notes</label>
+                                            <div class=" mb-3">
+                                                {/* <label for="formFile" class="form-label"></label> */}
+                                                <input class="form-control" type="file" id="formFile" ref={fileRef} />
                                             </div>
                                             <div>
                                                 <button onClick={addFile} className={scStyle.addBtn} type='button'>ADD</button>
@@ -398,7 +398,7 @@ function ServiceCform() {
                                                 <thead>
                                                     <tr>
                                                         <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6  border">#</th>
-                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 text-center border">Notes</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 text-center border">Files</th>
                                                         <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
                                                     </tr>
                                                 </thead>
