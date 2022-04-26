@@ -28,6 +28,10 @@ function ServiceCform() {
             planDesRef.current.value = '';
         }
     }
+    const planDelete = (index) => {
+        let newPlan = plan.slice(0, index).concat(plan.slice(index + 1))
+        setPlan(newPlan);
+    }
     return (
         <form action="">
             <div class="my-5">
@@ -201,22 +205,27 @@ function ServiceCform() {
                                             </div>
                                         </div>
                                         <div>
-                                            <table class="table table-striped">
+                                            <table className={scStyle.planTable} class="table table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Plane Code</th>
                                                         <th>Plan Description</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        {plan.map((plan, i) => (
-                                                            // <td key={i}>{plan.planName}</td>
-                                                            // <td key={i}>{plan.planCode}</td>
-                                                            <td key={i}>{plan.planDes}</td>
-                                                        ))}
-                                                    </tr>
+
+                                                    {plan.map((plan, index) => (
+                                                        <tr >
+                                                            <td >{plan.planName}</td>
+                                                            <td >{plan.planCode}</td>
+                                                            <td >{plan.planDes}</td>
+                                                            <td>
+                                                                <i onClick={() => planDelete(index)} class="bi bi-trash"></i>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>
                                         </div>
