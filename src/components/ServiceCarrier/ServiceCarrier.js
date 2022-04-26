@@ -70,7 +70,7 @@ function ServiceCform() {
         if (note.length == 1 || note.length == 0) {
             setNoteTable(false);
         }
-        setPlan(newNote);
+        setNote(newNote);
 
     }
 
@@ -256,7 +256,6 @@ function ServiceCform() {
                                                 <button onClick={addData} className={scStyle.addBtn} type='button'>ADD</button>
                                             </div>
                                         </div>
-
                                     </div>
                                 }
                                 <div class="px-5">
@@ -298,68 +297,43 @@ function ServiceCform() {
                                     </div>
                                 </div>
                                 {isNote &&
-                                    <div>
-
-                                        <div class="px-5">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={noteRef}></textarea>
-                                                <label for="floatingTextarea">Notes</label>
-                                            </div>
-                                            <div >
-                                                <button onClick={addNote} className={scStyle.addBtn} type='button'>ADD</button>
-                                            </div>
+                                    <div style={{ position: "relative" }} class="px-5 ">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={noteRef}></textarea>
+                                            <label for="floatingTextarea">Notes</label>
                                         </div>
-                                        <div class="px-5">
-                                            {noteTable &&
-                                                <div style={{ marginBottom: '20px' }}  >
-                                                    <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">#</th>
-                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Notes</th>
-                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                            {note.map((note, index) => (
-                                                                <tr>
-                                                                    <td>{index}</td>
-                                                                    <td class="fs-6 ps-5 fw-normal border">{note.noteName}</td>
-                                                                    <td class="fs-5 ps-5 fw-normal border">
-                                                                        <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => noteDelete(index)} class="bi bi-trash ms-2"></i>
-                                                                    </td>
-                                                                </tr>
-                                                            ))}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            }
+                                        <div class="my-3">
+                                            <button style={{ position: 'absolute', right: '30%', padding: '8px', border: 'none', backgroundColor: '#4c62e2', borderRadius: '4px', color: '#ffffff' }} onClick={addNote} type='button'>ADD</button>
                                         </div>
                                     </div>
                                 }
+                                <div class="px-5 mt-3">
+                                    {noteTable &&
+                                        <div style={{ marginBottom: '20px' }}  >
+                                            <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
+                                                <thead>
+                                                    <tr>
+                                                        <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6  border">#</th>
+                                                        <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 text-center border">Notes</th>
+                                                        <th style={{ backgroundColor: '#ecedf7', width: '5%' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {note.map((note, index) => (
+                                                        <tr>
+                                                            <td style={{ width: '5%' }} class="fs-6 fw-normal border">{index + 1}</td>
+                                                            <td class="fs-6 ps-5 text-start fw-normal border">{note.noteName}</td>
+                                                            <td class="fs-5 ps-5 fw-normal border">
+                                                                <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => noteDelete(index)} class="bi bi-trash ms-2"></i>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+                                </div>
                                 {/* END  */}
-
-                                {/* End
-                                <div class="row px-5">
-                                    <div class="col-12 col-md-6 col-lg-6">
-                                        <div class="mb-3 text-start">
-                                            <label f class="form-label">SIM Status</label>
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected>Select Option</option>
-                                                <option value="1">Active</option>
-                                                <option value="2">Inactive</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-6">
-                                        <div class="mb-3 text-start">
-                                            <label for="formFileMultiple" class="form-label">Upload Files</label>
-                                            <input class="form-control" type="file" id="formFileMultiple" multiple />
-                                        </div>
-                                    </div>
-                                </div> */}
-
                                 <div class="col-12 text-center mt-4">
                                     <button class="btn btn-primary" type="submit">Add Service Data</button>
                                 </div>

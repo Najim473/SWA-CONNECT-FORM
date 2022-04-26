@@ -117,8 +117,8 @@ td ul button:nth-child(5) {
   background-color: RoyalBlue;
 }
 
-.addBtn {
-  position: absolute;
+.addBtn{
+  /* position: absolute; */
   right: 0%;
   padding: 8px;
   border-radius: 4px;
@@ -126,4 +126,4 @@ td ul button:nth-child(5) {
   background: #4c62e2;
   color: white;
 }
- 
+
