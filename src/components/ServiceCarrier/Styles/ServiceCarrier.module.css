@@ -119,7 +119,7 @@ td ul button:nth-child(5) {
 
 .addBtn {
   position: absolute;
-  right: 5%;
+  right: 0%;
   padding: 8px;
   border-radius: 4px;
   border: none;
@@ -129,6 +129,7 @@ td ul button:nth-child(5) {
 
 .planTable {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .planTable thead tr th {
@@ -150,7 +151,7 @@ td ul button:nth-child(5) {
 }
 
 .planTable tbody tr td i {
-  color: #4c62e2;
+  color: #e43039;
 }
 
 .planTable tbody tr td:nth-child(4) {

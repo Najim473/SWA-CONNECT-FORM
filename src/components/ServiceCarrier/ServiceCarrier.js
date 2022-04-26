@@ -3,6 +3,7 @@ import scStyle from './Styles/ServiceCarrier.module.css'
 function ServiceCform() {
     const [plusBtn, setPlusBtn] = useState(true);
     const [isShow, setIsshow] = useState(false);
+    const [planTable, setPlanTable] = useState(false)
     const handleClick = () => {
         setIsshow(!isShow);
         setPlusBtn(!plusBtn);
@@ -27,10 +28,15 @@ function ServiceCform() {
             planCodeRef.current.value = '';
             planDesRef.current.value = '';
         }
+        setPlanTable(true);
     }
     const planDelete = (index) => {
-        let newPlan = plan.slice(0, index).concat(plan.slice(index + 1))
+        let newPlan = plan.slice(0, index).concat(plan.slice(index + 1));
+        if (plan.length == 1 || plan.length == 0) {
+            setPlanTable(false);
+        }
         setPlan(newPlan);
+
     }
     return (
         <form action="">
@@ -176,8 +182,8 @@ function ServiceCform() {
                                     </div>
                                 </div>
                                 {isShow &&
-                                    <div>
-                                        <div style={{ position: "relative" }} class="px-5 mb-5">
+                                    <div class="px-5">
+                                        <div style={{ position: "relative" }} class=" mb-5">
                                             <div class="row ">
                                                 <div class="col-12 col-md-6 col-lg-6">
                                                     <div class="mb-3 text-start">
@@ -204,31 +210,33 @@ function ServiceCform() {
                                                 <button onClick={addData} className={scStyle.addBtn} type='button'>ADD</button>
                                             </div>
                                         </div>
-                                        <div>
-                                            <table className={scStyle.planTable} class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Plane Code</th>
-                                                        <th>Plan Description</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    {plan.map((plan, index) => (
-                                                        <tr >
-                                                            <td >{plan.planName}</td>
-                                                            <td >{plan.planCode}</td>
-                                                            <td >{plan.planDes}</td>
-                                                            <td>
-                                                                <i onClick={() => planDelete(index)} class="bi bi-trash"></i>
-                                                            </td>
+                                        {planTable &&
+                                            <div className='border'>
+                                                <table className={scStyle.planTable} class="table table-striped border border-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Plane Code</th>
+                                                            <th>Plan Description</th>
+                                                            <th>Action</th>
                                                         </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        {plan.map((plan, index) => (
+                                                            <tr >
+                                                                <td >{plan.planName}</td>
+                                                                <td >{plan.planCode}</td>
+                                                                <td >{plan.planDes}</td>
+                                                                <td>
+                                                                    <i onClick={() => planDelete(index)} class="bi bi-trash"></i>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
                                     </div>
                                 }
                                 {/* End  */}
