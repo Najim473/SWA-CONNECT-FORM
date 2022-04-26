@@ -9,6 +9,7 @@ function ServiceCform() {
         setIsshow(!isShow);
         setPlusBtn(!plusBtn);
     };
+
     const [plan, setPlan] = useState([]);
     const planNameRef = useRef('');
     const planCodeRef = useRef('');
@@ -39,6 +40,40 @@ function ServiceCform() {
         setPlan(newPlan);
 
     }
+    // NOTE 
+    const [noteBtn, setNoteBtn] = useState(true);
+    const [isNote, setIsNote] = useState(false);
+    const [noteTable, setNoteTable] = useState(false)
+    const noteRef = useRef('');
+    const handleNote = () => {
+        setIsNote(!isNote);
+        setNoteBtn(!noteBtn)
+    };
+    // addNote
+    const [note, setNote] = useState([]);
+    const addNote = () => {
+        if (noteRef.current.value === '') {
+            alert('Please Enter value for adding plan ')
+        }
+        else {
+            const noteValue = {
+                noteName: noteRef.current.value
+            }
+            setNote([...note, noteValue])
+            console.log(note)
+            noteRef.current.value = '';
+            setNoteTable(true);
+        }
+    }
+    const noteDelete = (index) => {
+        let newNote = note.slice(0, index).concat(note.slice(index + 1));
+        if (note.length == 1 || note.length == 0) {
+            setNoteTable(false);
+        }
+        setPlan(newNote);
+
+    }
+
     return (
         <form action="">
             <div class="my-5">
@@ -255,21 +290,54 @@ function ServiceCform() {
                                 </div>
                                 {/* END  */}
                                 {/* ADD NOTES  */}
-                                {/* <div class=" m-3 " >
+                                <div class=" m-3 " >
                                     <div class="d-flex mt-3">
                                         <p class="fs-4 ms-4">Add Notes </p>
-                                        {plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
-                                        {!plusBtn && <i onClick={handleClick} style={{ cursor: 'pointer' }} class="bi bi-dash-square fs-4 ms-3 "></i>}
+                                        {noteBtn && <i onClick={handleNote} style={{ cursor: 'pointer' }} class="bi bi-plus-square fs-4 ms-3 "></i>}
+                                        {!noteBtn && <i onClick={handleNote} style={{ cursor: 'pointer' }} class="bi bi-dash-square fs-4 ms-3 "></i>}
                                     </div>
                                 </div>
-                                {isShow &&
-                                    <div class="px-5">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                            <label for="floatingTextarea">Notes</label>
+                                {isNote &&
+                                    <div>
+
+                                        <div class="px-5">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" ref={noteRef}></textarea>
+                                                <label for="floatingTextarea">Notes</label>
+                                            </div>
+                                            <div >
+                                                <button onClick={addNote} className={scStyle.addBtn} type='button'>ADD</button>
+                                            </div>
+                                        </div>
+                                        <div class="px-5">
+                                            {noteTable &&
+                                                <div style={{ marginBottom: '20px' }}  >
+                                                    <table style={{ borderColllaps: 'collapse', width: '100%' }} class="table  border border-1">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">#</th>
+                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Notes</th>
+                                                                <th style={{ backgroundColor: '#ecedf7' }} class="fs-6 fw-normal p-6 ps-5 border">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            {note.map((note, index) => (
+                                                                <tr>
+                                                                    <td>{index}</td>
+                                                                    <td class="fs-6 ps-5 fw-normal border">{note.noteName}</td>
+                                                                    <td class="fs-5 ps-5 fw-normal border">
+                                                                        <i style={{ color: '#ff4533', cursor: 'pointer' }} onClick={() => noteDelete(index)} class="bi bi-trash ms-2"></i>
+                                                                    </td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
-                                } */}
+                                }
                                 {/* END  */}
 
                                 {/* End
@@ -291,14 +359,7 @@ function ServiceCform() {
                                         </div>
                                     </div>
                                 </div> */}
-                                {/* <div class="row px-5">
-                                    <div class="col-12 col-md-12 col-lg-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                            <label for="floatingTextarea">Notes</label>
-                                        </div>
-                                    </div>
-                                </div> */}
+
                                 <div class="col-12 text-center mt-4">
                                     <button class="btn btn-primary" type="submit">Add Service Data</button>
                                 </div>
