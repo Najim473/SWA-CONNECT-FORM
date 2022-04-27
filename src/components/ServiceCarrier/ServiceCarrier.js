@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-// import scStyle from './Styles/ServiceCarrier.module.css'
-import scStyle from './ServiceCarrier.module.css';
+import scStyle from './Styles/ServiceCarrier.module.css'
+// import scStyle from './ServiceCarrier.module.css';
 function ServiceCform() {
     const [plusBtn, setPlusBtn] = useState(true);
     const [isShow, setIsshow] = useState(false);
@@ -109,7 +109,7 @@ function ServiceCform() {
     // END 
     return (
         <form action="">
-            <div class="my-5">
+            <div className={scStyle.serviceData} class="my-5 mx-5">
                 <div class="d-flex justify-content-between px-4">
                     <h3>Service Carriers</h3>
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#serviceModal">Add New Service Carrier</button>
@@ -149,7 +149,7 @@ function ServiceCform() {
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="serviceModalLabel">Add Service Carrier
+                            <h5 class="modal-title ms-5" id="serviceModalLabel">Add Service Carrier
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -437,7 +437,7 @@ function ServiceCform() {
                         </div>
                         <div class="modal-body">
                             <div style={{ width: '100%' }} className={scStyle.serviceView}>
-                                <h1 style={{ textAlign: 'start' }}>General Information</h1>
+                                <h1 style={{ textAlign: 'start', fontSize: '20px' }}>General Information</h1>
                                 <table class="table table-striped ">
                                     <tbody>
                                         <tr>
@@ -490,16 +490,16 @@ function ServiceCform() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h1 style={{ textAlign: 'start' }}>Phone Plan</h1>
-                                <table class="table table-striped ">
+                                <h1 style={{ textAlign: 'start', fontSize: '20px' }}>Phone Plan</h1>
+                                <table className={scStyle.planTableData} class="table table-striped ">
                                     <tbody>
                                         <tr>
                                             <td>Name</td>
-                                            <td>321 Communication</td>
+                                            <td class="text-start">321 Communication</td>
                                         </tr>
                                         <tr>
                                             <td>Plan Code</td>
-                                            <td>T2345dr</td>
+                                            <td class="text-start">T2345dr</td>
                                         </tr>
                                         <tr>
                                             <td>Created Date</td>
@@ -512,7 +512,7 @@ function ServiceCform() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h1 style={{ textAlign: 'start' }}>Notes</h1>
+                                <h1 style={{ textAlign: 'start', fontSize: '20px' }}>Notes</h1>
                                 <table class="table table-striped ">
                                     <tbody>
                                         <tr>
@@ -521,7 +521,7 @@ function ServiceCform() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h1 style={{ textAlign: 'start' }}>Files</h1>
+                                <h1 style={{ textAlign: 'start', fontSize: '20px' }}>Files</h1>
                                 <table class="table table-striped ">
                                     <tbody>
                                         <tr>

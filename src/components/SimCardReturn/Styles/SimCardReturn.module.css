@@ -1,4 +1,4 @@
-.serviceData {
+.simreturnData {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-top: 30px;
 }
@@ -40,6 +40,10 @@
 
 .serviceView table tbody tr td {
   text-align: start;
+}
+
+.serviceView table tbody tr td:nth-child(2) {
+  padding-left: 50px;
 }
 
 .downloadBtn, .printBtn {
@@ -110,4 +114,4 @@
   background: #b4cee4;
   padding-right: 30px;
 }
-/*# sourceMappingURL=ServiceCarrier.module.css.map */
+/*# sourceMappingURL=SimCardReturn.module.css.map */
