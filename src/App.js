@@ -4,6 +4,7 @@ import PhonePlanForm from './components/PhonePlan/PhonPlan';
 import ServiceCarrier from './components/ServiceCarrier/ServiceCarrier';
 import SimReturnForm from './components/SimCardReturn/SimCardReturn';
 import DeviceOrderForm from './components/DeviceOrder/DeviceOrder';
+import SimCardOrdrForm from './components/SimCardOrders/SimCardOrders';
 // import SimcardAdd from './components/SimcardAdd/SimcardAdd';
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <VendorForm />
       <SimReturnForm />
       <DeviceOrderForm />
+      <SimCardOrdrForm />
     </div>
   );
 }
